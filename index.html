@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bias-Aware Annotation Task Designer Toolkit</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f4; }
+    header { background: #333; color: #fff; padding: 20px 0; text-align: center; }
+    section { padding: 20px; max-width: 1000px; margin: auto; background: #fff; margin-bottom: 20px; }
+    h1, h2, h3 { color: #333; }
+    ul { padding-left: 20px; }
+    .resource { background: #e8f0fe; border-left: 5px solid #1a73e8; padding: 10px; margin-bottom: 10px; }
+    .download { background: #c8e6c9; border-left: 5px solid #388e3c; padding: 10px; margin-bottom: 10px; }
+    footer { text-align: center; padding: 10px; background: #333; color: white; }
+    label { display: block; margin-top: 10px; }
+    select, button { padding: 8px; margin-top: 5px; }
+    .form-result { background: #fff3cd; border-left: 5px solid #ffc107; padding: 10px; margin-top: 20px; display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Bias-Aware Annotation Task Designer Toolkit</h1>
+  <p>Practical Resources for Ethical and Effective Annotation Design</p>
+</header>
+
+<section>
+  <h2>Toolkit Overview</h2>
+  <p>This toolkit is designed to help task designers integrate bias mitigation strategies into their annotation workflows. Drawing from cognitive science and our own empirical findings, this toolkit provides interactive checklists, code snippets, and design templates to support fair, accurate, and human-centered annotation practices.</p>
+</section>
+
+<section>
+  <h2>Downloadable Resources</h2>
+  <div class="download">
+    <strong>Bias-Aware Task Setup Checklist (PDF)</strong><br>
+    <a href="resources/Bias-Aware_Task_Setup_Checklist.pdf" download>Download</a>
+  </div>
+  <div class="download">
+    <strong>Annotator Self-Reflection Checklist (PDF)</strong><br>
+    <a href="resources/Annotator_Self_Reflection_Checklist.pdf" download>Download</a>
+  </div>
+  <div class="download">
+    <strong>Semantic-Level Annotation Design Guide (Notion Template - PDF export)</strong><br>
+    <a href="resources/Semantic_Level_Annotation_Guide.pdf" download>Download</a>
+  </div>
+</section>
+
+<section>
+  <h2>Code Examples & UI Snippets</h2>
+  <div class="resource">
+    <strong>Confidence Slider Component (HTML/JS)</strong><br>
+    <a href="resources/Confidence_Slider_Example.html" download>Download Code</a>
+  </div>
+  <div class="resource">
+    <strong>Peer Annotation Toggle Feature</strong><br>
+    <a href="resources/Peer_Annotation_Toggle.js" download>Download Code</a>
+  </div>
+  <div class="resource">
+    <strong>Task Randomizer Script</strong><br>
+    <a href="resources/Task_Randomizer_Script.js" download>Download Code</a>
+  </div>
+</section>
+
+<section>
+  <h2>Interactive Design Strategy Wizard</h2>
+  <form id="strategyForm">
+    <label for="semanticLevel">Select Semantic Level:</label>
+    <select id="semanticLevel">
+      <option value="">-- Choose --</option>
+      <option value="Level 1">Level 1 (Abstract)</option>
+      <option value="Level 2">Level 2 (Concrete)</option>
+      <option value="Level 3">Level 3 (Emotional)</option>
+    </select>
+
+    <label for="biasRisk">Select Bias Risk:</label>
+    <select id="biasRisk">
+      <option value="">-- Choose --</option>
+      <option value="Bandwagon">Bandwagon</option>
+      <option value="Ambiguity">Ambiguity</option>
+      <option value="Sequential">Sequential</option>
+    </select>
+
+    <button type="button" onclick="showStrategies()">Get Recommendations</button>
+  </form>
+
+  <div class="form-result" id="resultBox">
+    <strong>Recommended Strategies:</strong>
+    <ul id="strategyList"></ul>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Bias-Aware Toolkit Initiative</p>
+</footer>
+
+<script>
+function showStrategies() {
+  const level = document.getElementById('semanticLevel').value;
+  const bias = document.getElementById('biasRisk').value;
+  const list = document.getElementById('strategyList');
+  const box = document.getElementById('resultBox');
+  list.innerHTML = '';
+
+  if (!level || !bias) {
+    list.innerHTML = '<li>Please select both semantic level and bias risk.</li>';
+  } else {
+    const strategies = [];
+    if (level === 'Level 2' && bias === 'Bandwagon') {
+      strategies.push('Hide peer annotations to reduce anchoring.');
+      strategies.push('Introduce post-task consensus review instead of real-time feedback.');
+    } else if (level === 'Level 3' && bias === 'Ambiguity') {
+      strategies.push('Enable peer annotation visibility to support decision-making.');
+      strategies.push('Add uncertainty tags and context-sensitive tooltips.');
+    } else if (bias === 'Sequential') {
+      strategies.push('Randomize task sequence.');
+      strategies.push('Insert attention reset tasks between semantic levels.');
+    } else {
+      strategies.push('Use confidence sliders and flagging mechanisms for ambiguous tasks.');
+    }
+    strategies.forEach(s => {
+      const li = document.createElement('li');
+      li.textContent = s;
+      list.appendChild(li);
+    });
+  }
+
+  box.style.display = 'block';
+}
+</script>
+
+</body>
+</html>
