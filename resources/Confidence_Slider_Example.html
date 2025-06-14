@@ -1,0 +1,17 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Confidence Slider</title></head>
+<body>
+  <label for="confidence">Confidence Level:</label>
+  <input type="range" id="confidence" name="confidence" min="0" max="100" value="50">
+  <span id="output">50</span>%
+  <script>
+    const slider = document.getElementById("confidence");
+    const output = document.getElementById("output");
+    slider.oninput = function() {
+      output.innerText = this.value;
+    };
+  </script>
+</body>
+</html>
